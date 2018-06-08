@@ -1,0 +1,29 @@
+.el-header {
+  background-color: #B3C0D1;
+  color: #333;
+  text-align: center;
+}
+.el-footer {
+  background-color: #B3C0D1;
+  color: #333;
+  text-align: center;
+  line-height: 35px;
+  position: absolute;
+  bottom: 0px;
+  left: 200px;
+  width: calc(100% - 200px);
+}
+.el-aside {
+  background-color: #545c64;
+  position: fixed;
+  bottom: 0px;
+  top: 60px;
+}
+.el-main {
+  background-color: #E9EEF3;
+  color: #333;
+  position: absolute;
+  left: 200px;
+  height: calc(100% - 95px);
+  width: calc(100% - 200px);
+}
