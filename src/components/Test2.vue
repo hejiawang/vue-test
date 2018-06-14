@@ -1,5 +1,5 @@
 <template>
-  <div class="animated fadeInRight">
+  <div>
     <h1>测试······2</h1>
     <h1>{{msgTest}}</h1>
   </div>
