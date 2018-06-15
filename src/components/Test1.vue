@@ -1,18 +1,17 @@
 <template>
+  <transition name="el-zoom-in-top">
   <div style="height: calc(100% - 70px)">
-
-
-
     <el-row style="margin: 20px 0px;">
       <el-button size="medium" @click="dialogFormVisible = true">默认按钮</el-button>
-      <el-button size="medium" type="primary">主要按钮</el-button>
+      <el-button size="medium" type="primary" @click="getTestTableSelect">主要按钮</el-button>
       <el-button size="medium" type="success">成功按钮</el-button>
       <el-button size="medium" type="info">信息按钮</el-button>
       <el-button size="medium" type="warning">警告按钮</el-button>
       <el-button size="medium" type="danger">危险按钮</el-button>
     </el-row>
 
-    <el-table :data="tableData" height="calc(100% - 80px)" tooltip-effect="dark">
+    <el-table :data="tableData" ref="testTable" height="calc(100% - 80px)" tooltip-effect="dark"
+              v-loading="loading" @row-click="rowClieck" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" />
 
       <el-table-column prop="date" label="日期" width="150">
@@ -57,36 +56,48 @@
     </el-dialog>
 
   </div>
-
+  </transition>
 </template>
 
 <script>
 export default {
   name: 'Test1',
   data () {
-    const item = {
-      date: '2016-05-02',
-      name: '王小虎',
-      address: '辽宁省沈阳市浑南经济开发区沈本大街3-5号5-15-4;辽宁省沈阳市浑南经济开发区沈本大街3-5号5-15-4',
-      age: '18',
-      phone: '1333333333',
-      live: '足球、篮球、乒乓球；蛙泳、蝶泳、自由泳；长跑、短跑、接力跑；'
-    };
+    const item = [
+      {
+        date: '2016-05-02',
+        name: '王小虎',
+        address: '辽宁省沈阳市浑南经济开发区沈本大街3-5号5-15-4;辽宁省沈阳市浑南经济开发区沈本大街3-5号5-15-4',
+        age: '18',
+        phone: '1333333333',
+        live: '足球、篮球、乒乓球；蛙泳、蝶泳、自由泳；长跑、短跑、接力跑；'
+      },
+      {
+        date: '2016-05-03',
+        name: '王大虎',
+        address: '辽宁省沈阳市浑南经济开发区沈本大街3-5号5-15-4;辽宁省沈阳市浑南经济开发区沈本大街3-5号5-15-4',
+        age: '18',
+        phone: '1333333333',
+        live: '足球、篮球、乒乓球；蛙泳、蝶泳、自由泳；长跑、短跑、接力跑；'
+      }
+    ];
     return {
-      tableData: Array(20).fill(item),
+      //tableData: Array(2).fill(item),
+      tableData: item,
+      loading: true,
       dialogFormVisible: false,
       formLabelWidth: '120px',
       form: {
         name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
+        region: ''
       },
+      testTableSelection: []
     }
+  },
+  created() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 500);
   },
   methods: {
     handleDelete( $index, row ){
@@ -101,6 +112,15 @@ export default {
           message: '删除成功!'
         });
       });
+    },
+    getTestTableSelect(){
+      console.info(this.testTableSelection);
+    },
+    rowClieck( row, event, column ){
+      this.$refs.testTable.toggleRowSelection(row);
+    },
+    handleSelectionChange( val ){
+      this.testTableSelection = val;
     }
   }
 }

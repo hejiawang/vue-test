@@ -1,5 +1,6 @@
 <template>
-  <div class="hello animated fadeInRight">
+  <transition name="el-zoom-in-top">
+  <div>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -81,6 +82,7 @@
       </li>
     </ul>
   </div>
+  </transition>
 </template>
 
 <script>

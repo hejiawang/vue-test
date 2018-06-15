@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <h1>测试······2</h1>
-    <h1>{{msgTest}}</h1>
-  </div>
+  <transition name="el-zoom-in-top">
+    <div>
+        <h1>测试······2</h1>
+        <h1>{{msgTest}}</h1>
+    </div>
+  </transition>
 </template>
 
 <script>
