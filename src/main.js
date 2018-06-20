@@ -7,6 +7,7 @@ import locale from 'element-ui/lib/locale/lang/zh-CN'
 import App from './App'
 import router from './router'
 import 'babel-polyfill'
+import $ from 'jquery'
 
 import 'animate.css'
 

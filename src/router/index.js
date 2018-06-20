@@ -17,6 +17,7 @@ export default new Router({
         { path: 'test1', component: Test1 }
         ,{ path: 'test2', component: Test2 }
         ,{ path: 'helloWord', component: HelloWorld }
+        ,{ path: 'mainTest', component: MainTest }
       ]
     }
   ]
