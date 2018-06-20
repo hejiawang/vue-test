@@ -8,11 +8,24 @@
 </template>
 
 <script>
+import { list } from '@/api/test'
+
 export default {
   name: 'Test2',
   data () {
     return {
       msgTest: 'Welcome to Your Vue.js App Two'
+    }
+  },
+  created() {
+    this.getList()
+  },
+  methods: {
+    getList() {
+      list().then( response => {
+          console.info(response);
+        }
+      )
     }
   }
 }
